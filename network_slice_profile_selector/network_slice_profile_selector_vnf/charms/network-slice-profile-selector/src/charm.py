@@ -221,7 +221,7 @@ class NetwokSliceProfileSelectorCharm(SSHProxyCharm):
         try:
             proxy = self.get_ssh_proxy()
 
-            result, error = proxy.run(f"wget https://raw.githubusercontent.com/eduardosantoshf/network-slice-profile-selector-vnf/refs/heads/main/aux/enforce_slice_profile.sh")
+            result, error = proxy.run(f"https://raw.githubusercontent.com/ATNoG/network-slice-profile-enforcer-vnf/refs/heads/main/aux/enforce_slice_profile.sh")
             proxy.run("chmod +xr enforce_slice_profile.sh")
             proxy.run(f"echo \"Start: $(date +%s%3N)\" >> timestamps.txt && ./enforce_slice_profile.sh {profile} && echo \"End: $(date +%s%3N)\" >> timestamps.txt")
             logger.info({"output": result, "errors": error})
